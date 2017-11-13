@@ -1,0 +1,20 @@
+{
+  "name": "facialrecognition",
+  "version": "1.0.0",
+  "description": "Project to determine the race that is most obersvable in the facial complexion of the image",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Ivan Bauer",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-fileupload": "^0.3.0",
+    "fs": "0.0.1-security",
+    "najax": "^1.0.3",
+    "path": "^0.12.7"
+  }
+}
