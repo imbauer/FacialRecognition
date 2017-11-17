@@ -10,22 +10,86 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 </head>
+<style>
+    #nav-mobile a:hover {
+        color: black;
+        text-decoration: none;
+    }
+
+</style>
 
 
 <body>
 
-    <button id="submitMyStuff" onclick="doStuff()">Submit!</button>
-    <input type="text" id="url">
-    <div id="output"></div>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo center">Facial Recognition Web Application</a>
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="demo.html">Demo</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    
+    <div>&nbsp;</div>
+
+    <div class="row">
+        <div class="col s12">
+            <div class="input-field col s2 offset-s4">
+                <input id="app_id" type="text" class="validate">
+                <label for="app_id">App ID</label>
+            </div>
+            <div class="input-field col s2">
+                <input id="key" type="text" class="validate">
+                <label for="key">Key</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12">
+            <div class="input-field col s4 offset-s4">
+                <input id="url" type="text" class="validate">
+                <label for="url">Enter Image</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="center-align">
+        <button id="submitMyStuff" onclick="doStuff()" class="btn waves-effect waves-light " type="submit" name="action">Submit
+    <i class="material-icons right"></i>
+    </button>
+    </div>
+
+    <div>&nbsp;</div>
+
+
+    <div class="row">
+        <div class="col s12">
+            <img class="col s4 offset-s4" id="sampleImg">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12">
+            <div class="col s4 offset-s4" id="output" style="text-align:center;">&nbsp;</div>
+        </div>
+    </div>
+
+
+
+
     <script type="text/javascript">
         function doStuff() {
             var imageUrl = $("#url").val();
+            var kairos_app_id = $("#app_id").val();
+            var kairos_key = $("#key").val();
             $("#sampleImg").attr("src", imageUrl)
             $.ajax({
                 data: {
-                    image: imageUrl
+                    image: imageUrl,
+                    app_id: kairos_app_id,
+                    key: kairos_key
                 },
                 url: '/getRaceData',
                 success: function(data) {
@@ -33,33 +97,23 @@
                 }
             })
         }
-    </script>
 
-    
-    <div class="row">
-        <div class="col s12 m7">
-            <div class="card">
-                <div class="card-image">
-                    <img id="sampleImg">
-                    <span class="card-title">Card Title</span>
-                </div>
-                <div class="card-content">
-                    <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-                </div>
-                <div class="card-action">
-                    <a href="#">This is a link</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    </script>
 
 </body>
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
 <!-- Bootstrap core JavaScript
     ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 

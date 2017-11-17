@@ -14,7 +14,7 @@ server.get("/", function (req, res) {
 // Endpoint Test
 server.get("/test", function (req, res) {
     console.log("it worked");
-    res.send("test")
+    res.send("test");
 })
 
 //Sends input URL to the command prompt
@@ -22,15 +22,22 @@ server.use(bodyParser());
 
 //First Callback level
 server.get('/getRaceData', function (req, res) {
-    console.log(req.query); //Logs the image url that is to be dealt with
+    console.log(req.query.image); //Logs the image url that is to be dealt with
+    console.log(req.query);
+    var obj = {
+        image: req.query.image
+    }
+    console.log(obj)
     console.log("/////////////////////////////////////")
 
     //Use of KAIROS API to send image inforamtion to 
 
     //API ID and Key for usage of API
     var headers = {
-        "app_id": "YOUR_ID",
-        "app_key": "YOUR_KEY"
+        //"app_id": "27de2072",
+        //"app_key": "160b0ac70dfd81d946905c82e0c03309"
+        "app_id": req.query.app_id,
+        "app_key": req.query.key
     };
 
     var url = "http://api.kairos.com/detect";
@@ -39,7 +46,7 @@ server.get('/getRaceData', function (req, res) {
     var options = {
         headers: headers,
         type: "POST",
-        data: JSON.stringify(req.query),
+        data: JSON.stringify(obj),
         dataType: "text"
     };
 
@@ -57,7 +64,7 @@ function formatKairosData(kairosResponse, callback) {
     //Splitting JSON file containing human analytics by \"
     console.log(JSON.parse(kairosResponse).images[0].faces)
     console.log("/////////////////////////////////////")
-    
+
     var face = JSON.parse(kairosResponse).images[0].faces[0];
 
     //Defining arrays to store race and correlation value
