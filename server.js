@@ -96,6 +96,6 @@ function formatKairosData(kairosResponse, callback) {
 
 
 //Create Server
-server.listen(3000, function () {
+server.listen(process.env.PORT || 3000, function () {
     console.log("Uploaded server listening on port 3000");
 })
