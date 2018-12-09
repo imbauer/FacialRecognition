@@ -30,19 +30,20 @@ server.get('/getRaceData', function (req, res) {
     console.log(obj)
     console.log("/////////////////////////////////////")
 
-    //Use of KAIROS API to send image inforamtion to 
+    //Use of KAIROS API to send image inforamtion to
 
     //API ID and Key for usage of API
     var headers = {
-        //"app_id": "27de2072",
-        //"app_key": "160b0ac70dfd81d946905c82e0c03309"
-        "app_id": req.query.app_id,
-        "app_key": req.query.key
+        "Content-type" : "application/json",
+        "app_id": "fe49efdf",
+        "app_key": "c6523a49d27fa5cdb2686d24fdb2685e"
+//        "app_id": req.query.app_id,
+//        "app_key": req.query.key
     };
 
     var url = "http://api.kairos.com/detect";
 
-    // make request 
+    // make request
     var options = {
         headers: headers,
         type: "POST",
@@ -62,6 +63,7 @@ server.get('/getRaceData', function (req, res) {
 //Read output.JSON file and display contents on console
 function formatKairosData(kairosResponse, callback) {
     //Splitting JSON file containing human analytics by \"
+    console.log(JSON.parse(kairosResponse))
     console.log(JSON.parse(kairosResponse).images[0].faces)
     console.log("/////////////////////////////////////")
 
